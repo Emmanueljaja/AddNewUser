@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="practice.css">
+</head>
+
+<body>
+  <form>
+    <h1>Student Registration</h1>
+    <h4 title="FirstName">First Name</h4>
+    <input type="text" id="input1" placeholder="First Name">
+    <p>&nbsp;</p>
+
+    <h4 title="LastName">Last Name</h4>
+    <input type="text" id="input2" placeholder="Last Name">
+    <p>&nbsp;</p>
+
+    <h4>Level</h4><br>
+    <label>Primary</label>
+    <input type="radio"  value="Primary" name="radioButton">
+
+    <label>Secondary</label>
+    <input type="radio"  value="Secondary" name="radioButton">
+
+    <label>Tertiary</label>
+    <input type="radio"  value="Tertiary" name="radioButton">
+
+    <h5>Date of Birth</h5>
+    <input type="date">
+    <p>&nbsp;</p>
+
+    <h4>Gender</h4>
+    <label>Male</label>
+    <input type="radio"  value="Male" name="radioButton1">
+    <label>Female</label>
+    <input type="radio"  value="Female" name="radioButton1">
+    <p>&nbsp;</p>
+
+    <label>Marital Status</label>
+    <select>
+      <option></option>
+      <option value="Single">Single</option>
+      <option value="Married">Married</option>
+    </select><br>
+
+    <button type="submit" class="btn btn-success" id="submitButton">
+      Submit
+    </button>
+    <p>&nbsp;</p>
+
+
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Level</th>
+          <th scope="col">Date of Birth</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Marital status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td id="table1"></td>
+          <td id="table2"></td>
+          <td id="table3"></td>
+          <td id="table4"></td>
+          <td id="table5"></td>
+          <td id="table6"></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </form>
+
+  <script>
+    formObjContainer = []
+
+    formObjj=JSON.parse(localStorage.getItem('form'))
+
+
+
+    let fname = document.getElementById("input1")
+
+    let lname = document.getElementById("input2")
+
+
+    let radioButton = document.querySelector("radio")
+
+    localStorage.setItem('form', JSON.stringify(formObjContainer))
+
+
+    submitBttn = document.getElementById("submitButton")
+
+
+    submitButton.addEventListener('click', add)
+
+
+    // if (document.querySelector('input[name="radioButton"]')) {
+    //   document.querySelectorAll('input[name="radioButton"]').forEach((elem) => {
+    //     elem.addEventListener("change", function (event) {
+    //       var item = event.target.value;
+    //       console.log(item);
+    //     });
+    //   });
+    // }
+
+
+    // $(document).ready(function(){
+    // var radios = document.getElementsByName("form");
+    // var val = localStorage.getItem('form');
+    // for(var i=0;i<radios.length;i++){
+    // if(radios[i].value == val){
+    //   radios[i].checked = true;
+    // }
+    // }
+    // $('input[name="radioButton"]').on('change', function(){
+    //   localStorage.setItem('form', $(this).val());
+
+    // })
+    // });
+
+
+    function dispDataOnDom() {
+      let formObjj = localStorage.getItem("form")
+    }
+
+    function add(event) {
+
+      event.preventDefault();
+
+
+      let formObj = {
+        "firstname": fname.value,
+        "lastname": lname.value,
+        "Level": 
+      }
+
+
+      formObjContainer.push(formObj)
+      console.log(formObjContainer)
+
+      localStorage.setItem('form', JSON.stringify(formObjContainer))
+      dispDataOnDom();
+
+    }
+
+  </script>
+</body>
+
+</html>

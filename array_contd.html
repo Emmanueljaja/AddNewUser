@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <button onclick="sayHello()">Add New user</button>
+    <div id="users">
+        
+    </div>
+    
+    <script>
+        function sayHello()
+        {
+            alert("Hello")
+        }
+
+
+        object = {}; //object
+       // object = new object();
+
+        array = [1,2,3]; //array
+        array = new Array();
+
+
+        let internalUsers = 
+        [
+            { "fullName": "Opaluwa Aisha",
+              "email" : "aisha@tiidelab.com",
+              "phone": "08076543534",
+              "pics": "pro1.jpg"
+            },
+
+            { "fullName": "Samuel Yusuf",
+              "email" : "syusuf@tiidelab.com",
+              "phone": "08076543534",
+              "pics": "pro2.jpg"
+            }
+
+        ]
+
+        //alert(internalUsers.length)
+
+        internalUsers[internalUsers.length] =     
+         {    "fullName": "Akan asanga",
+              "email" : "asanga@tiidelab.com",
+              "phone": "08076543534",
+              "pics" : "pro3.jpg"
+         }
+
+         internalUsers[internalUsers.length] =     
+         {    "fullName": "Rotimi Adebiyi",
+              "email" : "rotimi@tiidelab.com",
+              "phone": "08076543534"
+         }
+
+            //Array Method
+
+            //push
+            //shift
+            //unshift
+            //splice
+            /* Syntax
+            Array.push(element)
+            */
+
+
+        user =  
+         {    "fullName": "Onyedikachi Abuchi",
+              "email" : "abuchi@tiidelab.com",
+              "phone": "08076543539",
+              "pics": "lion.jpg"
+         },
+ 
+        //  {    "fullName": "segun Tunde",
+        //       "email" : "segun@tiidelab.com",
+        //       "phone": "08076545644",
+        //       "pics":"moon.jpg"
+        //  }
+         
+        //  alert(JSON.stringify(user))
+        
+         internalUsers.push(user)
+         //internalUsers.splice(0,1) //removes element from array
+         //splice(startposition, how many elements to remove)
+
+
+         usersCont = ''
+         console.time("For_loop")
+        for(i=0; i<internalUsers.length; i++){
+
+            usersCont += `<div>
+            <img src="${internalUsers[i].pics}" style="max-height: 100px;">
+            <strong>Full Name</strong> : ${internalUsers[i].fullName}<br>
+            <strong>Email</strong> : ${internalUsers[i].email}<br>
+            <strong>Phone</strong> : ${internalUsers[i].phone}<br>
+            <button style="background-color: red; color:#ffff" onclick="del()">Delete</button>
+            <button style="background-color: #d58574; color:#ffff">Edit</button>
+         </div><hr>`
+
+        }
+        console.timeEnd("For_loop")
+        document.getElementById("users").innerHTML = usersCont
+
+
+        /*
+            for(let varName of ArrayName){
+                ${varName}
+            }
+        */
+         //alert(JSON.stringify(internalUsers))
+
+         //Example
+        //  console.time("For_let")
+        //  for(let internalUser of internalUsers)
+        //  {
+
+        //     usersCont += `<div>
+        //     <img src="${internalUser.pics}" style="max-height: 100px;">
+        //     <strong>Full Name</strong> : ${internalUser.fullName}<br>
+        //     <strong>Email</strong> : ${internalUser.email}<br>
+        //     <strong>Phone</strong> : ${internalUser.phone}<br>
+        //   </div><hr>`
+
+        //  }
+        //  console.timeEnd("For_let")
+        //  document.getElementById("users").innerHTML = usersCont
+
+    </script>
+</body>
+</html>

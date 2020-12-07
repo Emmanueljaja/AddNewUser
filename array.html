@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  <p></p>
+  
+    
+
+
+
+    <script>
+        const KsolutionStudents =[
+            {
+                hobbies:["eating,dancing"],
+                name :"Taofeek",
+                age :30,
+                location:"Bwari"
+            },
+            {
+                hobbies:["praying"],
+                name :"Beshir",
+                age :16,
+                location:"kubwa",
+            },
+            {
+                hobbies:["smilling, trading"],
+                name :"Emmanuel",
+                age :30,
+                location:"zone 6",
+            },
+
+            {totalNumberOfStudent: 10},
+            "This is a dummy test"
+        ]
+           
+            
+            // document.getElementById("p1").innerHTML= KsolutionStudents[0].name
+            // document.getElementById("p2").innerHTML=KsolutionStudents[0].hobbies[0] + "<hr>"
+
+            // document.getElementById("p3").innerHTML= KsolutionStudents[1].name
+            // document.getElementById("p4").innerHTML=KsolutionStudents[1].hobbies[0] + "<hr>"
+        
+            // document.getElementById("p5").innerHTML= KsolutionStudents[2].name
+            // document.getElementById("p6").innerHTML=KsolutionStudents[2].hobbies[0] + "<hr>"
+
+            // document.getElementById("p7").innerHTML="The fourth element in the array is "+KsolutionStudents[3]
+
+            let list = document.querySelector('p'); 
+
+            for(i=0; i<KsolutionStudents.length; i++){
+                list.innerHTML = KsolutionStudents[i].name
+            }
+            
+            
+
+               
+            
+        
+    </script>
+</body>
+</html>

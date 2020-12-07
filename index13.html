@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To Do list</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="./todolist.css">
+    <link rel="stylesheet" href="./fontawesome-free-5.14.0-web/css/all.min.css">
+
+
+</head>
+<body>
+    <div class="container" id="div1">
+       <div id="div2">
+            <h5>EMMAX LIST</h5>
+       </div>
+
+       <hr>
+
+       <div>
+           <input type="text" id="input" placeholder="Enter your ToDo event">
+           <button id="bttn1" onclick="add()">
+                <i class="fas fa-plus-square"></i>
+           </button>
+       </div>
+       
+       <div>
+           <ul id="ul">
+               <li class="li"></li>
+           </ul>
+       </div>
+    </div>
+
+    <script>
+
+         todoList=JSON.parse(localStorage.getItem('todoEvent'))
+                 //transform to array
+                //  let list=JSON.parse(todoList)
+
+         let dataInput=document.getElementById('input')
+         let  checkValue=document.getElementsByName('check')
+
+               
+               
+       
+
+
+        function add(){
+         if (dataInput.value!=""){
+
+                
+         userEventData={
+                        
+         taskDesc:dataInput.value
+
+                       }
+            
+           todoList.push(userEventData)
+
+           localStorage.setItem('todoEvent',JSON.stringify(todoList))
+
+           
+          dataInput.value = [""]
+            dispDataOnDom()
+        
+        }else{
+         alert("You haven't added an event yet?")
+        }
+           
+    
+        }
+            dispDataOnDom()
+
+        function dispDataOnDom(){
+                 a="";                               
+                
+               
+            for (k=0; k<todoList.length; k++){
+                
+               a+=`
+               
+                <li>
+                    <button class="btn btn-sm btn-success" id="check" onclick="strokeLine()"><i class="fas fa-check"></button></i><span id="myTodo">${todoList[k].taskDesc}</span> <button class='btn btn-danger' id='btn3' onclick="del(${k})"><i class="fas fa-trash-alt"></i>
+                    </button>  <hr>
+                </li>
+              `
+            }
+           document.getElementById('ul').innerHTML = a;
+        }
+
+      
+   
+        function strokeLine(){
+           
+            // list = document.querySelector("ul")
+            // list.addEventListener('click', function(ev){
+            // if (ev.target.tagName == 'LI') {
+            // ev.target.toggle('done').innerHTML = list;
+            // }
+            // }, false);
+
+            alert("i am working")
+
+        } 
+               
+        function del(ev){
+           deleteConfirm = confirm("Are you sure you want to delete?")
+           const item = ev.target
+
+           if(deleteConfirm == true){
+                todoList.splice(ev,1)
+                localStorage.setItem('todoEvent',JSON.stringify(todoList))
+                dispDataOnDom()
+            }
+
+        }
+        
+    </script>
+</body>
+</html>

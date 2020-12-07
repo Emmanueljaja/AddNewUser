@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+</head>
+<body style="margin-left: 16px;">
+    <button onclick="addUser()" class="btn btn-sm, btn-success" style="margin-top: 16px;">Add new user</button>
+    <p>&nbsp;</p>
+    <div id="users"></div>
+   
+    <script>
+
+                                                                                                  
+       let internalUsers = 
+      [
+        { "fullName": "Opaluwa Aisha",
+        "email" : "aisha@tiidelab.com",
+        "phone": "08076543534",
+        "pics": "pro1.jpg"
+        },
+
+        { "fullName": "Samuel Yusuf",
+          "email" : "syusuf@tiidelab.com",
+          "phone": "08076543534",
+          "pics": "pro2.jpg"
+        }
+
+      ]
+
+
+      displayUsers()
+      function displayUsers(){
+        usersPlaceholder = '';
+      for(i=0; i<internalUsers.length; i++){
+        //if(internalUsers[i]!= null || internalUsers[i]!=undefined){
+        usersPlaceholder += `<div>
+        <img src="${internalUsers[i].pics}" style="max-height: 100px;"><br>
+        <strong>Full Name</strong> : ${internalUsers[i].fullName}<br>
+        <strong>Email</strong> : ${internalUsers[i].email}<br>
+        <strong>Phone</strong> : ${internalUsers[i].phone}<br>
+        <button style=" color:#ffff" onclick="deleteUser(${i})" class="btn btn-sm, btn-danger">Delete</button>
+        <button style=" color:#ffff" onclick="editUser(${i})" class="btn btn-sm, btn-warning">Edit</button>
+
+        </div><hr>`//}
+      }
+      document.getElementById("users").innerHTML = usersPlaceholder
+      }
+
+      function deleteUser(id)
+      {
+        if(confirm(`Are you sure you want to delete ${internalUsers[id].fullName}?`)){
+        internalUsers.splice(id,1)
+        displayUsers()
+
+        //delete internalUsers[id]
+        //alert(JSON.stringify(internalUsers))
+
+        //displayUsers()
+      }else{
+        alert("Delete cancelled")
+      }
+      }
+        
+      function addUser()
+        {
+        let newUser = 
+        { "fullName": prompt("Enter your full name"),
+          "email"   : prompt("Enter your email"),
+          "phone" : prompt("Enter your phone number"),
+          "pics"  : prompt("upload profile pics")
+        }
+        internalUsers.push(newUser)
+        displayUsers()
+      }
+
+
+      function editUser(id)
+      {
+            
+       let UserDetails = 
+        { "fullName": prompt("Enter your full name",internalUsers[id].fullName),
+          "email"   : prompt("Enter your email",internalUsers[id].email),
+          "phone" : prompt("Enter your phone number",internalUsers[id].phone),
+          "pics"  : prompt("upload profile pics",internalUsers[id].pics)
+        }
+
+          internalUsers[id] = UserDetails
+          displayUsers()
+        
+      }
+
+    </script>
+</body>
+</html>
