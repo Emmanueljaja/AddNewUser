@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>local storage</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -75,11 +74,19 @@
 
     //   ]
 
+
+
+    let internalUsers = [];
+
+
+
       //add
       //localStorage.setItem("locationName",Date to be saved)
 
       //get
       //localStorage.getItem("locationName")
+
+      //let internalUsers = []
 
       
 
@@ -121,11 +128,13 @@
         displayUsers()
       }
 
-
+      
       function displayUsers(){
+        
         profilPictureSelected = '';
         usersPlaceholder = '';
-       for(i=0; i<internalUsers.length; i++){
+
+        for(i=0; i<internalUsers.length; i++){
         //if(internalUsers[i]!= null || internalUsers[i]!=undefined){
         usersPlaceholder += `<div>
         <img src="${internalUsers[i].pics}" style="max-height: 100px;"><br>
@@ -183,7 +192,8 @@
         document.querySelector('.modal-body #fullName').value = internalUsers[userIndex].fullName
         document.querySelector('.modal-body #email').value = internalUsers[userIndex].email
         document.querySelector('.modal-body #phone').value = internalUsers[userIndex].phone
-        document.querySelector('.modal-body #pics').value = internalUsers[userIndex].pics
+        document.querySelector('.modal-body #pics').value = internalUsers[userIndex].profilPictureSelected
+
       }
 
 
@@ -194,7 +204,7 @@
           "fullName": document.querySelector('.modal-body #fullName').value,
           "email": document.querySelector('.modal-body #email').value,
           "phone": document.querySelector('.modal-body #phone').value,
-          "pics": profilPictureSelected
+          "pics": document.querySelector('.modal-body #pics'). profilPictureSelected
         }
           internalUsers[userIdToEdit] = newUserDetails
           localStorage.setItem("users",JSON.stringify(internalUsers))
